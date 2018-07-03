@@ -10,14 +10,17 @@ package ec.gob.proyecto.moledo;
  * @author Usuario
  */
 public class Usuario {
+    int id;
     private String nombre;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre) {
+    public Usuario(int id, String nombre) {
         this.nombre = nombre;
+        this.id = id;
     }
+    
 
     public String getNombre() {
         return nombre;
