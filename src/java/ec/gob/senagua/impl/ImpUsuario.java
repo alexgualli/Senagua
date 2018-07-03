@@ -20,7 +20,7 @@ public class ImpUsuario extends Coneccion {
     public boolean insertar(Usuario a) throws Exception {
         boolean insert = false;
 
-        String sql = "INSERT INTO public.usuarios( \"Nombre\", clave, \"Tipo\") VALUES (?, ?, ?);";
+        String sql = "INSERT INTO public.usuarios( nombre, clave, tipo) VALUES (?, ?, ?);";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, a.getNombre()));
         prts.add(new Parametro(2, a.getPassword()));
@@ -28,7 +28,7 @@ public class ImpUsuario extends Coneccion {
         Coneccion con = new Coneccion();
 
         if (a.getCodigo() != 0) {
-            sql = "INSERT INTO public.usuarios( \"Nombre\", clave, \"Tipo\", \"Codigo\") VALUES (?, ?, ?, ?);";
+            sql = "INSERT INTO public.usuarios( nombre, clave, tipo, codigo) VALUES (?, ?, ?, ?);";
             prts.add(new Parametro(4, a.getCodigo()));
 
         }
