@@ -24,7 +24,7 @@ public class TestUsuario {
         ImpUsuario user = new ImpUsuario();
         Usuario u = new Usuario();
         
-        u.setCodigo(100);
+        u.setCodigo(10);
         u.setNombre("alex");
         u.setCargo("lolo");
         u.setPassword("1234");
