@@ -5,13 +5,18 @@
  */
 package ec.gob.senagua.entidades;
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  *
  * @author paul
  */
 public class Cliente {
+    
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     
     private int codigo;
     private String nombre;
@@ -35,6 +40,32 @@ public class Cliente {
         this.fechaNac = fechaNac;
         this.codigoDis = codigoDis;
     }
+
+    
+    public Cliente(int codigo, String nombre, String apellido, String direccion, String cedula, String correo, String fechaNac, int codigoDis) {
+        this.codigo = codigo;        
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.cedula = cedula;
+        this.correo = correo;
+        try {
+            this.fechaNac =sdf.parse(fechaNac);
+        } catch (Exception e) {
+            System.err.println("No se ha podido definir las fechas. " + e.getMessage());
+        }        
+        this.codigoDis = codigoDis;
+    }
+    
+     public void setFechaNac(String fechaNac) {
+        try {
+            this.fechaNac = sdf.parse(fechaNac);
+        } catch (ParseException e) {
+            System.err.println("No se ha podido definir la fecha de inicio. " + e.getMessage());
+        }
+
+    }
+    
 
     public int getCodigo() {
         return codigo;
@@ -99,7 +130,11 @@ public class Cliente {
     public void setCodigoDis(int codigoDis) {
         this.codigoDis = codigoDis;
     }
-    
+
+   
+    public String toString(){
+        return this.nombre+" "+this.apellido;
+    }
     
 
     
