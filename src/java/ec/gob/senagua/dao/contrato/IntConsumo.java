@@ -5,10 +5,23 @@
  */
 package ec.gob.senagua.dao.contrato;
 
+import ec.gob.senagua.entidades.Consumo;
+import java.util.List;
+
 /**
  *
  * @author paul
  */
 public interface IntConsumo {
+    
+    public int insertar(Consumo consumo) throws Exception;
+
+    public Consumo obtenerCodigo(int id) throws Exception;
+    
+    public List<Consumo> obtenerTodos() throws Exception;
+
+    public int actualizar(Consumo usuario) throws Exception;
+
+    public int eliminar(int id) throws Exception;
     
 }
