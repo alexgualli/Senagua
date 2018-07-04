@@ -5,13 +5,17 @@
  */
 package ec.gob.senagua.entidades;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author paul
  */
 public class Consumo {
+    
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     
     private int codigo;
     private Date fecha;
@@ -32,6 +36,28 @@ public class Consumo {
         this.lecturaAct = lecturaAct;
         this.consumo = consumo;
         this.medidor = medidor;
+    }
+    
+    public Consumo(int codigo, String fecha, int lecturaAnt, int lecturaAct, double consumo, Medidor medidor) {
+        this.codigo = codigo;
+        try {
+            this.fecha =sdf.parse(fecha);
+        } catch (ParseException e) {
+            System.err.println("No se ha podido definir las fechas. " + e.getMessage());
+        }      
+        this.lecturaAnt = lecturaAnt;
+        this.lecturaAct = lecturaAct;
+        this.consumo = consumo;
+        this.medidor = medidor;
+    }
+    
+    public void setFecha(String fecha) {
+        try {
+            this.fecha = sdf.parse(fecha);
+        } catch (ParseException e) {
+            System.err.println("No se ha podido definir la fecha de inicio. " + e.getMessage());
+        }
+
     }
 
     public Medidor getMedidor() {
@@ -80,6 +106,11 @@ public class Consumo {
 
     public void setConsumo(double consumo) {
         this.consumo = consumo;
+    }
+    
+    @Override
+    public String toString(){
+        return this.fecha+" "+ this.lecturaAnt+" "+ this.lecturaAct;
     }
     
     
