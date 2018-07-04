@@ -8,7 +8,6 @@ package ec.gob.senagua.entidades;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  *
@@ -51,7 +50,7 @@ public class Cliente {
         this.correo = correo;
         try {
             this.fechaNac =sdf.parse(fechaNac);
-        } catch (Exception e) {
+        } catch (ParseException e) {
             System.err.println("No se ha podido definir las fechas. " + e.getMessage());
         }        
         this.codigoDis = codigoDis;
@@ -132,6 +131,7 @@ public class Cliente {
     }
 
    
+    @Override
     public String toString(){
         return this.nombre+" "+this.apellido;
     }
