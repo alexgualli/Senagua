@@ -5,10 +5,23 @@
  */
 package ec.gob.senagua.dao.contrato;
 
+import ec.gob.senagua.entidades.Cliente;
+import java.util.List;
+
 /**
  *
  * @author paul
  */
 public interface IntCliente {
+    
+    public int insertar(Cliente cliente) throws Exception;
+
+    public Cliente obtenerCodigo(int id) throws Exception;
+    
+    public List<Cliente> obtenerTodos() throws Exception;
+
+    public int actualizar(Cliente usuario) throws Exception;
+
+    public int eliminar(int id) throws Exception;
     
 }
