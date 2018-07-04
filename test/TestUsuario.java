@@ -1,3 +1,4 @@
+
 import ec.gob.senagua.entidades.Usuario;
 import ec.gob.senagua.implementacion.ImpUsuario;
 import java.util.ArrayList;
@@ -10,73 +11,68 @@ import org.junit.Test;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Usuario
  */
-
-
 public class TestUsuario {
-    
+
     @Test
     public void test() {
-        
+
         ImpUsuario user = new ImpUsuario();
         Usuario usuario = new Usuario();
-        
+
         usuario.setCodigo(100);
         usuario.setNombre("alex");
         usuario.setTipo("lolo");
         usuario.setClave("1234");
-   
-        
+
         //INSERTAR
-        int insert =0;
+        int insert = 0;
         try {
             insert = user.insertar(usuario);
-            if(insert!=0){
-                System.out.println("Insertado: "+usuario.toString());                
-            }                      
+            if (insert != 0) {
+                System.out.println("Insertado: " + usuario.toString());
+            }
         } catch (Exception e) {
             System.err.println("Error al insertar: " + e.getMessage());
-        }        
-        assertTrue(insert>0);
-        
+        }
+        assertTrue(insert > 0);
+
         //ACTUALIZAR 
         int update = 0;
         try {
-            usuario.setTipo("Administradofg");            
-            update=user.actualizar(usuario);
-            if (update!=0) {
+            usuario.setTipo("Administrador");
+            update = user.actualizar(usuario);
+            if (update > 0) {
                 System.out.println("ACTUALIZADO : " + usuario.toString());
             }
         } catch (Exception e) {
-            System.err.println("¡ERROR! NO SE PUDO ACTUALIZAR");
+            System.err.println("¡ERROR! NO SE PUDO ACTUALIZAR" + e);
         }
-        assertTrue(update>0);
-        
-        
+        assertTrue(update > 0);
+
         //LISTAR POR CODIGO
-        usuario = null;
+        Usuario usuario1 = null;
         try {
-            usuario = user.obtenerCodigo(100);
-            System.out.println("Buscado por Codigo: " + usuario.toString());
+            usuario1 = user.obtenerCodigo(100);
+            System.out.println("Buscado por Codigo: " + usuario1.toString());
         } catch (Exception e) {
             System.err.println("ERROR! al buscar " + e.getMessage());
         }
-        assertTrue(usuario != null);
-        
+        assertTrue(usuario1 != null);
+
         //LISTAR POR LOGIN
-        usuario = null;
+        Usuario usuario2 = null;
         try {
-            usuario = user.obtenerLogin("alex", "1234");
-            System.out.println("Buscado por Login: " + usuario.toString());
+            usuario2 = user.obtenerLogin("alex", "1234");
+            System.out.println("Buscado por Login: " + usuario2.toString());
         } catch (Exception e) {
             System.err.println("ERROR! al buscar " + e.getMessage());
         }
-        assertTrue(usuario != null);
-        
+        assertTrue(usuario2 != null);
+
         //LISTAR TODOS
         List<Usuario> lista = new ArrayList<>();
         try {
@@ -88,16 +84,13 @@ public class TestUsuario {
         } catch (Exception e) {
             System.err.println("¡ERROR! NINGUN USUARIO ENCONTRADO");
         }
-        assertTrue(lista != null);
-        
-        
-        
-        
+        assertTrue(lista.size() > 0);
+
         //ELIMINAR
         int delete = 0;
         try {
             delete = user.eliminar(usuario.getCodigo());
-            if (delete!=0) {
+            if (delete != 0) {
                 System.out.println("ELIMINADO: " + usuario.toString());
             }
         } catch (Exception e) {
@@ -106,7 +99,5 @@ public class TestUsuario {
         assertTrue(delete >= 0);
 
     }
-  
-    
-    
+
 }
