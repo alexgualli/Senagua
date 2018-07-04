@@ -1,4 +1,3 @@
-
 import ec.gob.senagua.entidades.Usuario;
 import ec.gob.senagua.implementacion.ImpUsuario;
 import java.util.ArrayList;
