@@ -93,7 +93,7 @@ public class ImpUsuario implements IntUsuario{
     public List<Usuario> obtenerTodos() throws Exception {
     List<Usuario> usuarios = new ArrayList<>();
         String sql = "SELECT codigo, nombre, clave, tipo "
-                + "FROM public.usuarios  order by lastname ASC";
+                + "FROM public.usuarios  order by nombre ASC";
         try {
             ResultSet rst = con.queryGet(sql);
             while (rst.next()) {
@@ -114,7 +114,7 @@ public class ImpUsuario implements IntUsuario{
     public int actualizar(Usuario usuario) throws Exception {
        int update = 0;
        String sql = "UPDATE public.usuarios " +
-                    "SET codigo=?, nombre=?, clave=?, tipo=? " +
+                    "SET nombre=?, clave=?, tipo=? " +
                     "WHERE codigo = ?;";
        List<Parametro> prts = new ArrayList<>();
        prts.add(new Parametro(1, usuario.getNombre()));
