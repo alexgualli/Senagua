@@ -13,23 +13,18 @@ public class Usuario {
 
     private int codigo;
     private String nombre;
-    private String password;
-    private String cargo;
+    private String clave;
+    private String tipo;
 
     public Usuario() {
     }
-    
-   
 
-    public Usuario(int codigo, String nombre, String password, String cargo) {
+    public Usuario(int codigo, String nombre, String clave, String tipo) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.password = password;
-        this.cargo = cargo;
+        this.clave = clave;
+        this.tipo = tipo;
     }
-
-  
-   
 
     public int getCodigo() {
         return codigo;
@@ -39,24 +34,6 @@ public class Usuario {
         this.codigo = codigo;
     }
 
- 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-  
-
     public String getNombre() {
         return nombre;
     }
@@ -64,9 +41,28 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+ 
     @Override
     public String toString(){
          return nombre;
-    }
+    }    
+   
+
 }
