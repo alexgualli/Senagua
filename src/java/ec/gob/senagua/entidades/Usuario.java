@@ -61,7 +61,7 @@ public class Usuario {
  
     @Override
     public String toString(){
-         return nombre;
+         return nombre+" "+tipo;
     }    
    
 
