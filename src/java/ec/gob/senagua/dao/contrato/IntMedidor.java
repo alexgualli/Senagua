@@ -5,10 +5,23 @@
  */
 package ec.gob.senagua.dao.contrato;
 
+import ec.gob.senagua.entidades.Medidor;
+import java.util.List;
+
 /**
  *
  * @author paul
  */
 public interface IntMedidor {
+    
+    public int insertar(Medidor medidor) throws Exception;
+
+    public Medidor obtenerCodigo(String id) throws Exception;
+    
+    public List<Medidor> obtenerTodos() throws Exception;
+
+    public int actualizar(Medidor medidor) throws Exception;
+
+    public int eliminar(int id) throws Exception;
     
 }

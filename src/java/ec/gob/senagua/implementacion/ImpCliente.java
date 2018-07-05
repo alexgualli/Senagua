@@ -56,7 +56,7 @@ public class ImpCliente implements IntCliente{
     public Cliente obtenerCodigo(int id) throws Exception {
         Cliente cliente = null;
         String sql ="SELECT nombre, apellido, direccion, cedula, correo, fecha_nac, codigo_discapacidad " +
-"                   FROM public.clientes "
+                    " FROM public.clientes "
                 + "WHERE codigo = ? ";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, id));
