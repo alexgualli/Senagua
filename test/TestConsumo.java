@@ -2,6 +2,8 @@
 import ec.gob.senagua.entidades.Consumo;
 import ec.gob.senagua.entidades.Medidor;
 import ec.gob.senagua.implementacion.ImpConsumo;
+import java.util.ArrayList;
+import java.util.List;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
@@ -24,7 +26,7 @@ public class TestConsumo {
         Consumo consumo = new Consumo();
         Medidor medidor = new Medidor();
         
-        medidor.getCodigo();
+        medidor.setCodigo("a1b2c3");
         consumo.setCodigo(300);
         consumo.setConsumo(20);
         consumo.setFecha("2018-10-10");
@@ -44,6 +46,43 @@ public class TestConsumo {
         }
         assertTrue(insert > 0);
         
+        
+        //ACTUALIZAR
+        int update =0;
+        try {
+            consumo.setLecturaAct(100);
+            update=imp.actualizar(consumo);
+            if(update>0){
+                System.out.println("ACTUALIZADO: "+consumo.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("¡ERROR! ERROR AL ACTUALIZAR: "+e);
+        }
+        assertTrue(update > 0);
+        
+        
+        //LISTAR POR CODIGO
+         Consumo consumo2 = null;
+        try {
+            consumo2 = imp.obtenerCodigo(300);
+            System.out.println("BUSCADO POR CODIGO: " + consumo2.toString());
+        } catch (Exception e) {
+            System.err.println("ERROR! ERROR AL BUSCAR: " + e.getMessage());
+        }
+        assertTrue(consumo2 != null);  
+        
+        //LISTAR TODOS
+        List<Consumo> lista = new ArrayList<>();
+        try {
+            lista = imp.obtenerTodos();
+            System.out.println("\nTODOS LOS CONSUMOS");
+            for (Consumo consu : lista) {
+                System.out.println("\t" + consu.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("¡ERROR! ERROR NO SE PUDO LISTAR: "+e);
+        }
+        assertTrue(lista.size()>0);
         
         
         
