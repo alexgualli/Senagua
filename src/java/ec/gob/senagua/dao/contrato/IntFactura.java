@@ -5,10 +5,23 @@
  */
 package ec.gob.senagua.dao.contrato;
 
+import ec.gob.senagua.entidades.Factura;
+import java.util.List;
+
 /**
  *
  * @author paul
  */
 public interface IntFactura {
+    
+    public int insertar(Factura factura) throws Exception;
+
+    public Factura obtenerCodigo(int id) throws Exception;
+    
+    public List<Factura> obtenerTodos() throws Exception;
+
+    public int actualizar(Factura factura) throws Exception;
+
+    public int eliminar(int id) throws Exception;
     
 }
