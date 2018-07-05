@@ -20,7 +20,7 @@ public interface IntConsumo {
     
     public List<Consumo> obtenerTodos() throws Exception;
 
-    public int actualizar(Consumo usuario) throws Exception;
+    public int actualizar(Consumo consumo) throws Exception;
 
     public int eliminar(int id) throws Exception;
     
