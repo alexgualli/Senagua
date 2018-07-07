@@ -18,6 +18,7 @@ public class DetalleFactura {
     private Consumo consumo;
     private Servicio servicio;
     private int m3Min;
+    private double costoMin;
     private double costoExc;
     private double consumoAct;
     private double consumoAnt;
@@ -28,7 +29,7 @@ public class DetalleFactura {
     public DetalleFactura() {
     }
 
-    public DetalleFactura(int codigo, String descripcion, Factura factura, double subtotal, Consumo consumo, Servicio servicio, int m3Min, double costoExc, double consumoAct, double consumoAnt, double valorConsumo, double m3Exc, double calorM3Exc) {
+    public DetalleFactura(int codigo, String descripcion, Factura factura, double subtotal, Consumo consumo, Servicio servicio, int m3Min, double costoMin, double costoExc, double consumoAct, double consumoAnt, double valorConsumo, double m3Exc, double valorM3Exc) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.factura = factura;
@@ -36,12 +37,13 @@ public class DetalleFactura {
         this.consumo = consumo;
         this.servicio = servicio;
         this.m3Min = m3Min;
+        this.costoMin = costoMin;
         this.costoExc = costoExc;
         this.consumoAct = consumoAct;
         this.consumoAnt = consumoAnt;
         this.valorConsumo = valorConsumo;
         this.m3Exc = m3Exc;
-        this.valorM3Exc = calorM3Exc;
+        this.valorM3Exc = valorM3Exc;
     }
 
     public int getCodigo() {
@@ -100,6 +102,14 @@ public class DetalleFactura {
         this.m3Min = m3Min;
     }
 
+    public double getCostoMin() {
+        return costoMin;
+    }
+
+    public void setCostoMin(double costoMin) {
+        this.costoMin = costoMin;
+    }
+
     public double getCostoExc() {
         return costoExc;
     }
@@ -144,8 +154,12 @@ public class DetalleFactura {
         return valorM3Exc;
     }
 
-    public void setCValorM3Exc(double calorM3Exc) {
-        this.valorM3Exc = calorM3Exc;
+    public void setValorM3Exc(double valorM3Exc) {
+        this.valorM3Exc = valorM3Exc;
+    }
+
+    public String toString(){
+        return this.descripcion+" "+this.subtotal;
     }
 
     
