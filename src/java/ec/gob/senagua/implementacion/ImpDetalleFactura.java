@@ -64,11 +64,11 @@ public class ImpDetalleFactura implements IntDetalleFactura {
     @Override
     public DetalleFactura obtenerCodigo(int id) throws Exception {
         DetalleFactura detalle = null;
-        String sql = "SELECT codigo, descripcion, codigo_factura, subtotal, codigo_consumo, \n"
+        String sql = "SELECT descripcion, codigo_factura, subtotal, codigo_consumo, \n"
                 + "       codigo_servicio, m3_minimo, costo_minimo, costo_excedente, consumo_actual, \n"
                 + "       consumo_anterior, consumo, m3_excedente, valor_m3_excedente\n"
                 + "  FROM public.detalle_factura"
-                + " WHERE codigo=?;";
+                + "  WHERE codigo=?;";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, id));
         try {
@@ -95,11 +95,11 @@ public class ImpDetalleFactura implements IntDetalleFactura {
                     detalle.setConsumo(consumo.obtenerCodigo(rst.getInt("codigo_consumo")));
                     detalle.setServicio(servicio.obtenerCodigo(rst.getInt("codigo_servicio")));
                 } catch (Exception e) {
-                    //System.out.print("");
+                    throw e;
                 }
 
             }
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw e;
         }
         return detalle;
@@ -136,10 +136,11 @@ public class ImpDetalleFactura implements IntDetalleFactura {
                     detalle.setConsumo(consumo.obtenerCodigo(rst.getInt("codigo_consumo")));
                     detalle.setServicio(servicio.obtenerCodigo(rst.getInt("codigo_servicio")));
                 } catch (Exception e) {
+                    throw e;
                 }
                 lista.add(detalle);
             }
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw e;
         }
 
