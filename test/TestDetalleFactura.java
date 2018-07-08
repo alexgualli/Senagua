@@ -50,8 +50,7 @@ public class TestDetalleFactura {
         detalle.setValorM3Exc(20);
         
 
-        
-          //INSERTAR 
+        //INSERTAR 
         int insert =0;
         try {
             insert=imp.insertar(detalle);
@@ -91,7 +90,7 @@ public class TestDetalleFactura {
         List<DetalleFactura> lista = new ArrayList<>();
         try {
             lista = imp.obtenerTodos();
-            System.out.println("TODOS LOS CONSUMOS");
+            System.out.println("TODOS LOS DETALLES DE FACTURA");
             for (DetalleFactura deta : lista) {
                 System.out.println("\t" + deta.toString());
             }
@@ -99,6 +98,7 @@ public class TestDetalleFactura {
             System.out.println("¡ERROR! ERROR NO SE PUDO LISTAR: "+e);
         }
         assertTrue(lista.size()>0);
+        
         
         //ELIMINAR
         int delete = 0;
