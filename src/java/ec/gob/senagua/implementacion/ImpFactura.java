@@ -26,8 +26,8 @@ public class ImpFactura implements IntFactura {
     public int insertar(Factura factura) throws Exception {
         int insert = 0;
         String sql = "INSERT INTO public.factura(codigo_cliente, codigo_usuario, observacion, estado, \n"
-                + "            fecha_de_emision, total, codigo_detalle, descuento)\n"
-                + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                + "            fecha_de_emision, total, descuento)\n"
+                + "    VALUES (?, ?, ?, ?, ?, ?, ?);";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, factura.getCliente().getCodigo()));
         prts.add(new Parametro(2, factura.getUsuario().getCodigo()));
@@ -35,13 +35,12 @@ public class ImpFactura implements IntFactura {
         prts.add(new Parametro(4, factura.getEstado()));
         prts.add(new Parametro(5, factura.getFechaEmi()));
         prts.add(new Parametro(6, factura.getTotal()));
-        prts.add(new Parametro(7, factura.getDetalle().getCodigo()));
-        prts.add(new Parametro(8, factura.getDescuento()));
+        prts.add(new Parametro(7, factura.getDescuento()));
         if (factura.getCodigo() != 0) {
             sql = "INSERT INTO public.factura(codigo_cliente, codigo_usuario, observacion, estado, \n"
-                    + "            fecha_de_emision, total, codigo_detalle, descuento, codigo)\n"
-                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-            prts.add(new Parametro(9, factura.getCodigo()));
+                    + "            fecha_de_emision, total, descuento, codigo)\n"
+                    + "    VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+            prts.add(new Parametro(8, factura.getCodigo()));
         }
         try {
             insert = con.querySet(sql, prts);
@@ -54,36 +53,28 @@ public class ImpFactura implements IntFactura {
 
     @Override
     public Factura obtenerCodigo(int id) throws Exception {
+
+        ImpCliente cliente = new ImpCliente();
+        ImpUsuario usuario = new ImpUsuario();
+
         Factura factura = null;
-        String sql = "SELECT codigo_cliente, codigo_usuario, observacion, estado, "
-                + "       fecha_de_emision, total, codigo_detalle, descuento"
-                + "  FROM public.factura "
-                + "WHERE codigo=? ";
+        String sql = "SELECT codigo, codigo_cliente, codigo_usuario, observacion, estado, "
+                + "       fecha_de_emision, total, descuento"
+                + "  FROM public.factura where codigo=? ";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, id));
         try {
             ResultSet rst = con.queryGet(sql, prts);
             while (rst.next()) {
                 factura = new Factura();
-
-                //factura.setCodigo(rst.getInt("codigo"));
-                try {
-                    ImpCliente cliente = new ImpCliente();
-                    ImpDetalleFactura detalle = new ImpDetalleFactura();
-                    ImpUsuario usuario = new ImpUsuario();
-
-                    factura.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
-                    factura.setUsuario(usuario.obtenerCodigo(rst.getInt("codigo_usuario")));
-                    factura.setObservacion(rst.getString("observacion"));
-                    factura.setEstado(rst.getString("estado"));
-                    factura.setFechaEmi(rst.getString("fecha_de_emision"));
-                    factura.setTotal(rst.getDouble("total"));
-                    factura.setDetalle(detalle.obtenerCodigo(rst.getInt("codigo_detalle")));
-                    factura.setDescuento(rst.getDouble("descuento"));
-
-                } catch (Exception e) {
-                    throw e;
-                }
+                factura.setCodigo(rst.getInt("codigo"));
+                factura.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
+                factura.setUsuario(usuario.obtenerCodigo(rst.getInt("codigo_usuario")));
+                factura.setObservacion(rst.getString("observacion"));
+                factura.setEstado(rst.getString("estado"));
+                factura.setFechaEmi(rst.getString("fecha_de_emision"));
+                factura.setTotal(rst.getDouble("total"));
+                factura.setDescuento(rst.getDouble("descuento"));
 
             }
         } catch (Exception e) {
@@ -94,32 +85,26 @@ public class ImpFactura implements IntFactura {
 
     @Override
     public List<Factura> obtenerTodos() throws Exception {
+        
+        ImpCliente cliente = new ImpCliente();
+        ImpUsuario usuario = new ImpUsuario();
+        
         List<Factura> lista = new ArrayList<>();
         String sql = "SELECT codigo, codigo_cliente, codigo_usuario, observacion, estado, "
-                + "       fecha_de_emision, total, codigo_detalle, descuento"
+                + "       fecha_de_emision, total, descuento"
                 + "  FROM public.factura;";
         try {
             ResultSet rst = con.queryGet(sql);
             while (rst.next()) {
                 Factura factura = new Factura();
-                try {
-                    ImpCliente cliente = new ImpCliente();
-                    ImpDetalleFactura detalle = new ImpDetalleFactura();
-                    ImpUsuario usuario = new ImpUsuario();
-
-                    factura.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
-                    factura.setUsuario(usuario.obtenerCodigo(rst.getInt("codigo_usuario")));
-                    factura.setObservacion(rst.getString("observacion"));
-                    factura.setEstado(rst.getString("estado"));
-                    factura.setFechaEmi(rst.getString("fecha_de_emision"));
-                    factura.setTotal(rst.getDouble("total"));
-                    factura.setDetalle(detalle.obtenerCodigo(rst.getInt("codigo_detalle")));
-                    factura.setDescuento(rst.getDouble("descuento"));
-                    factura.setCodigo(rst.getInt("codigo"));
-
-                } catch (Exception e) {
-                    throw e;
-                }
+                factura.setCodigo(rst.getInt("codigo"));
+                factura.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
+                factura.setUsuario(usuario.obtenerCodigo(rst.getInt("codigo_usuario")));
+                factura.setObservacion(rst.getString("observacion"));
+                factura.setEstado(rst.getString("estado"));
+                factura.setFechaEmi(rst.getString("fecha_de_emision"));
+                factura.setTotal(rst.getDouble("total"));
+                factura.setDescuento(rst.getDouble("descuento"));
                 lista.add(factura);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -134,7 +119,7 @@ public class ImpFactura implements IntFactura {
         int update = 0;
         String sql = "UPDATE public.factura\n"
                 + "   SET codigo_cliente=?, codigo_usuario=?, observacion=?, \n"
-                + "       estado=?, fecha_de_emision=?, total=?, codigo_detalle=?, descuento=?\n"
+                + "       estado=?, fecha_de_emision=?, total=?, descuento=?\n"
                 + " WHERE codigo=?;";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, factura.getCliente().getCodigo()));
@@ -143,9 +128,8 @@ public class ImpFactura implements IntFactura {
         prts.add(new Parametro(4, factura.getEstado()));
         prts.add(new Parametro(5, factura.getFechaEmi()));
         prts.add(new Parametro(6, factura.getTotal()));
-        prts.add(new Parametro(7, factura.getDetalle().getCodigo()));
-        prts.add(new Parametro(8, factura.getDescuento()));
-        prts.add(new Parametro(9, factura.getCodigo()));
+        prts.add(new Parametro(7, factura.getDescuento()));
+        prts.add(new Parametro(8, factura.getCodigo()));
         try {
             update = con.querySet(sql, prts);
         } catch (Exception e) {
@@ -158,8 +142,8 @@ public class ImpFactura implements IntFactura {
     @Override
     public int eliminar(int id) throws Exception {
         int delete = 0;
-        String sql = "DELETE FROM public.factura\n"
-                + " WHERE codigo = ?;";
+        String sql = "DELETE FROM factura "
+                + " WHERE codigo=?;";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, id));
         try {
