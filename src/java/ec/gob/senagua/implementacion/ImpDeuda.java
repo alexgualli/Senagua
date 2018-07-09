@@ -48,10 +48,13 @@ public class ImpDeuda implements IntDeuda {
     @Override
     public Deuda obtenerCodigo(int id) throws Exception {
 
+        ImpFactura factura = new ImpFactura();
+        ImpCliente cliente = new ImpCliente();
+
         Deuda deuda = null;
-        String sql = "SELECT valor, codigo_cliente, codigo_factura, meses_pendientes "
+        String sql = "SELECT codigo, valor, codigo_cliente, codigo_factura, meses_pendientes "
                 + "  FROM public.deudas "
-                + "WHERE codigo = ?;";
+                + "WHERE codigo=?;";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, id));
         try {
@@ -59,17 +62,10 @@ public class ImpDeuda implements IntDeuda {
             while (rst.next()) {
                 deuda = new Deuda();
                 deuda.setCodigo(rst.getInt("codigo"));
-                deuda.setValor(rst.getDouble("valor"));
+                deuda.setValor(rst.getDouble("valor"));                
+                deuda.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
+                deuda.setFactura(factura.obtenerCodigo(rst.getInt("codigo_factura")));                
                 deuda.setMesesPen(rst.getInt("meses_pendientes"));
-                try {
-                    ImpCliente cliente = new ImpCliente();
-                    ImpFactura factura = new ImpFactura();
-
-                    deuda.setFactura(factura.obtenerCodigo(rst.getInt("codigo_factura")));
-                    deuda.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
-                } catch (Exception e) {
-                    throw e;
-                }
             }
         } catch (Exception e) {
             throw e;
@@ -80,25 +76,22 @@ public class ImpDeuda implements IntDeuda {
 
     @Override
     public List<Deuda> obtenerTodos() throws Exception {
+        
+        ImpFactura factura = new ImpFactura();
+        ImpCliente cliente = new ImpCliente();
+        
         List<Deuda> lista = new ArrayList<>();
-        String sql = "SELECT valor, codigo_cliente, codigo_factura, meses_pendientes, codigo\n"
+        String sql = "SELECT codigo, valor, codigo_cliente, codigo_factura, meses_pendientes, codigo\n"
                 + "  FROM public.deudas;";
         try {
             ResultSet rst = con.queryGet(sql);
             while (rst.next()) {
                 Deuda deuda = new Deuda();
                 deuda.setCodigo(rst.getInt("codigo"));
-                deuda.setValor(rst.getDouble("valor"));
+                deuda.setValor(rst.getDouble("valor"));                
+                deuda.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
+                deuda.setFactura(factura.obtenerCodigo(rst.getInt("codigo_factura")));                
                 deuda.setMesesPen(rst.getInt("meses_pendientes"));
-                try {
-                    ImpCliente cliente = new ImpCliente();
-                    ImpFactura factura = new ImpFactura();
-
-                    deuda.setFactura(factura.obtenerCodigo(rst.getInt("codigo_factura")));
-                    deuda.setCliente(cliente.obtenerCodigo(rst.getInt("codigo_cliente")));
-                } catch (Exception e) {
-                    throw e;
-                }
                 lista.add(deuda);
             }
         } catch (ClassNotFoundException | SQLException e) {
