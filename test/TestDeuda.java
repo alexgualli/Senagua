@@ -77,7 +77,7 @@ public class TestDeuda {
         List<Deuda> lista = new ArrayList<>();
         try {
             lista = imp.obtenerTodos();
-            System.out.println("TODOS LOS CLIENTES");
+            System.out.println("TODOS LAS DEUDAS");
             for (Deuda deu : lista) {
                 System.out.println("\t" + deu.toString());
             }
