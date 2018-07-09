@@ -52,7 +52,7 @@ public class TestCliente {
         //ACTUALIZAR
         int update = 0;
          try {
-             cliente.setApellido("SIN APELLIDO");
+             cliente.setApellido("SIN");
              update=imp.actualizar(cliente);
              if(update>0){
                 System.out.println("ACTUALIZADO: "+cliente.toString());                
