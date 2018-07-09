@@ -34,7 +34,7 @@ public class TestCliente {
         cliente.setCodigoDis(10);
         cliente.setCorreo("sincuello@gmail.com");
         cliente.setDireccion("la dolo");
-        cliente.setFechaNac("2017-2-25");
+        cliente.setFechaNac("1992-05-24");
         
         
         //INSERTAR 
@@ -76,7 +76,7 @@ public class TestCliente {
         List<Cliente> lista = new ArrayList<>();
         try {
             lista = imp.obtenerTodos();
-            System.out.println("\n TODOS LOS CLIENTES");
+            System.out.println("TODOS LOS CLIENTES");
             for (Cliente cli : lista) {
                 System.out.println("\t" + cli.toString());
             }
