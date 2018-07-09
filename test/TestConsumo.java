@@ -29,7 +29,7 @@ public class TestConsumo {
         medidor.setCodigo("a1b2c3");
         consumo.setCodigo(300);
         consumo.setConsumo(20);
-        consumo.setFecha("2018-10-10");
+        consumo.setFecha("2010-10-10");
         consumo.setLecturaAct(10);
         consumo.setLecturaAnt(20);
         consumo.setMedidor(medidor);
