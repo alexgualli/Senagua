@@ -117,9 +117,9 @@ public class ImpUsuario implements IntUsuario{
                     "   SET  nombre=?, clave=?, tipo=?\n" +
                     " WHERE codigo=?;";
        List<Parametro> prts = new ArrayList<>();
-       prts.add(new Parametro(1, usuario.getNombre()));       
-       prts.add(new Parametro(2, usuario.getTipo()));
-       prts.add(new Parametro(3, usuario.getClave()));
+       prts.add(new Parametro(1, usuario.getNombre())); 
+       prts.add(new Parametro(2, usuario.getClave()));             
+       prts.add(new Parametro(3, usuario.getTipo()));
        prts.add(new Parametro(4, usuario.getCodigo()));
         try {
             update=con.querySet(sql, prts);     
