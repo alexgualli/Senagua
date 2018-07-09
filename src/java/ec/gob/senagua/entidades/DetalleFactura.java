@@ -158,6 +158,7 @@ public class DetalleFactura {
         this.valorM3Exc = valorM3Exc;
     }
 
+    @Override
     public String toString(){
         return this.descripcion+" "+this.subtotal;
     }
