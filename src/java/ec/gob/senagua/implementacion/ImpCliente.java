@@ -82,7 +82,7 @@ public class ImpCliente implements IntCliente{
     public List<Cliente> obtenerTodos() throws Exception {
         List<Cliente> lista = new ArrayList<>();
         String sql ="SELECT codigo, nombre, apellido, direccion, cedula, correo, fecha_nac, codigo_discapacidad "
-                + "FROM public.clientes";
+                + "FROM public.clientes order by apellido ASC;";
         try {
             ResultSet rst = con.queryGet(sql);
             while(rst.next()){
