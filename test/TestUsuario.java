@@ -90,13 +90,14 @@ public class TestUsuario {
         int delete = 0;
         try {
             delete = user.eliminar(usuario.getCodigo());
-            if (delete != 0) {
+            if (delete!=0) {
                 System.out.println("ELIMINADO: " + usuario.toString());
             }
         } catch (Exception e) {
-            System.err.println("¡ERROR! NO SE PUDO ELIMINAR");
+            System.err.println("¡ERROR! NO SE PUDO ELIMINAR: "+ e);
         }
-        assertTrue(delete >= 0);
+        assertTrue(delete > 0);
+        
 
     }
 
