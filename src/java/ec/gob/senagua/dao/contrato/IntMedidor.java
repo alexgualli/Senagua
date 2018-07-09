@@ -22,6 +22,6 @@ public interface IntMedidor {
 
     public int actualizar(Medidor medidor) throws Exception;
 
-    public int eliminar(int id) throws Exception;
+    public int eliminar(String id) throws Exception;
     
 }
