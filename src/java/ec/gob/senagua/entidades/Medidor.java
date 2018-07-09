@@ -47,6 +47,11 @@ public class Medidor {
     public void setTipoMed(String tipoMed) {
         this.tipoMed = tipoMed;
     }
+    
+    @Override
+    public String toString(){
+        return this.tipoMed;
+    }
 
     
     

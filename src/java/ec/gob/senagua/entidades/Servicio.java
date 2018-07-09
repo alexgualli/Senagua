@@ -68,6 +68,10 @@ public class Servicio {
         this.minimoM3 = minimoM3;
     }
     
+    @Override
+    public String toString(){
+        return this.tipoSer+" "+this.minimoM3+" "+this.costoMin+" "+this.costoExc ;
+    }
     
     
 }

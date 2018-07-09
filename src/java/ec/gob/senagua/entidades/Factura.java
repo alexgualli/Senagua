@@ -5,13 +5,18 @@
  */
 package ec.gob.senagua.entidades;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author paul
  */
 public class Factura {
+    
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    
     
     private int codigo;
     private Cliente cliente;
@@ -38,6 +43,33 @@ public class Factura {
         this.descuento = descuento;
     }
 
+    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, String estado, String fechaEmi, double total, DetalleFactura detalle, double descuento) {
+        this.codigo = codigo;
+        this.cliente = cliente;
+        this.usuario = usuario;
+        this.observacion = observacion;
+        this.estado = estado;
+        
+        try {
+            this.fechaEmi =sdf.parse(fechaEmi);
+        } catch (ParseException e) {
+            System.err.println("No se ha podido definir las fechas. " + e.getMessage());
+        }    
+        this.total = total;
+        this.detalle = detalle;
+        this.descuento = descuento;
+    }
+    
+    public void setFechaEmi(String fechaEmi) {
+        try {
+            this.fechaEmi = sdf.parse(fechaEmi);
+        } catch (ParseException e) {
+            System.err.println("No se ha podido definir la fecha de inicio. " + e.getMessage());
+        }
+
+    }
+    
+    
     public int getCodigo() {
         return codigo;
     }
@@ -111,7 +143,11 @@ public class Factura {
     }
     
     
-
+    @Override
+    public String toString(){
+        return this.observacion+" "+this.fechaEmi+" "+this.total;
+    }
+        
  
     
 }
