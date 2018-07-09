@@ -3,7 +3,6 @@ import ec.gob.senagua.entidades.Cliente;
 import ec.gob.senagua.entidades.DetalleFactura;
 import ec.gob.senagua.entidades.Factura;
 import ec.gob.senagua.entidades.Usuario;
-import ec.gob.senagua.implementacion.ImpCliente;
 import ec.gob.senagua.implementacion.ImpFactura;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +33,10 @@ public class TestFactura {
         cliente.setCodigo(1);
         detalle.setCodigo(1);
         usuario.setCodigo(1);
-
-        factura.setCliente(cliente);
+        
         factura.setCodigo(100);
+        factura.setCliente(cliente);
         factura.setDescuento(10);
-        factura.setDetalle(detalle);
         factura.setEstado("nada");
         factura.setFechaEmi("2018-10-10");
         factura.setObservacion("nada");
@@ -72,13 +70,14 @@ public class TestFactura {
         
          //LISTAR POR CODIGO
          Factura factura2 = new Factura();
+         
         try {
-            factura = imp.obtenerCodigo(100);
-            System.out.println("BUSCADO POR CODIGO: " + factura2.toString());
+            factura2 = imp.obtenerCodigo(100);
+            System.out.println("BUSCADO POR CODIGO: " + factura2.getTotal());
         } catch (Exception e) {
             System.err.println("ERROR! ERROR AL BUSCAR: " + e.getMessage());
         }
-        assertTrue(factura != null);  
+        assertTrue(factura2 != null);  
         
         //LISTAR TODOS
         List<Factura> lista = new ArrayList<>();
@@ -105,6 +104,7 @@ public class TestFactura {
             System.err.println("¡ERROR! NO SE PUDO ELIMINAR: " + e);
         }
         assertTrue(delete > 0);
+        
 
     }
 
