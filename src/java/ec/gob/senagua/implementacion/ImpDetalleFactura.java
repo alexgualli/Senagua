@@ -63,12 +63,17 @@ public class ImpDetalleFactura implements IntDetalleFactura {
 
     @Override
     public DetalleFactura obtenerCodigo(int id) throws Exception {
+        
+        ImpFactura impFactura = new ImpFactura();
+        ImpServicio impServicio = new ImpServicio();
+        ImpConsumo impConsumo = new ImpConsumo();
+        
         DetalleFactura detalle = null;
-        String sql = "SELECT descripcion, codigo_factura, subtotal, codigo_consumo, \n"
-                + "       codigo_servicio, m3_minimo, costo_minimo, costo_excedente, consumo_actual, \n"
-                + "       consumo_anterior, consumo, m3_excedente, valor_m3_excedente\n"
-                + "  FROM public.detalle_factura"
-                + "  WHERE codigo=?;";
+        String sql = "SELECT codigo, descripcion, codigo_factura, "
+                + "subtotal, codigo_consumo, codigo_servicio, m3_minimo, "
+                + "costo_minimo, costo_excedente, consumo_actual, consumo_anterior, "
+                + "consumo, m3_excedente, valor_m3_excedente  "
+                + "FROM detalle_factura WHERE codigo=?;";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, id));
         try {
@@ -77,7 +82,10 @@ public class ImpDetalleFactura implements IntDetalleFactura {
                 detalle = new DetalleFactura();
                 detalle.setCodigo(rst.getInt("codigo"));
                 detalle.setDescripcion(rst.getString("descripcion"));
+                detalle.setFactura(impFactura.obtenerCodigo(rst.getInt("codigo_factura")));
                 detalle.setSubtotal(rst.getDouble("subtotal"));
+                detalle.setConsumo(impConsumo.obtenerCodigo(rst.getInt("codigo_consumo")));
+                detalle.setServicio(impServicio.obtenerCodigo(rst.getInt("codigo_servicio")));
                 detalle.setM3Min(rst.getInt("m3_minimo"));
                 detalle.setCostoMin(rst.getDouble("costo_minimo"));
                 detalle.setCostoExc(rst.getDouble("costo_excedente"));
@@ -86,17 +94,6 @@ public class ImpDetalleFactura implements IntDetalleFactura {
                 detalle.setValorConsumo(rst.getDouble("consumo"));
                 detalle.setM3Exc(rst.getDouble("m3_excedente"));
                 detalle.setValorM3Exc(rst.getDouble("valor_m3_excedente"));
-                try {
-                    ImpFactura factura = new ImpFactura();
-                    ImpConsumo consumo = new ImpConsumo();
-                    ImpServicio servicio = new ImpServicio();
-
-                    detalle.setFactura(factura.obtenerCodigo(rst.getInt("codigo_factura")));
-                    detalle.setConsumo(consumo.obtenerCodigo(rst.getInt("codigo_consumo")));
-                    detalle.setServicio(servicio.obtenerCodigo(rst.getInt("codigo_servicio")));
-                } catch (Exception e) {
-                    throw e;
-                }
 
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -107,18 +104,26 @@ public class ImpDetalleFactura implements IntDetalleFactura {
 
     @Override
     public List<DetalleFactura> obtenerTodos() throws Exception {
+        ImpFactura impFactura = new ImpFactura();
+        ImpServicio impServicio = new ImpServicio();
+        ImpConsumo impConsumo = new ImpConsumo();
+        
         List<DetalleFactura> lista = new ArrayList<>();
-        String sql = "SELECT codigo, descripcion, codigo_factura, subtotal, codigo_consumo, \n"
-                + "       codigo_servicio, m3_minimo, costo_minimo, costo_excedente, consumo_actual, \n"
-                + "       consumo_anterior, consumo, m3_excedente, valor_m3_excedente\n"
-                + "  FROM public.detalle_factura;";
+        String sql = "SELECT codigo, descripcion, codigo_factura, subtotal,"
+                + " codigo_consumo, codigo_servicio, m3_minimo, costo_minimo, "
+                + "costo_excedente, consumo_actual, consumo_anterior, consumo,"
+                + " m3_excedente, valor_m3_excedente FROM detalle_factura;";
+
         try {
             ResultSet rst = con.queryGet(sql);
             while (rst.next()) {
                 DetalleFactura detalle = new DetalleFactura();
                 detalle.setCodigo(rst.getInt("codigo"));
                 detalle.setDescripcion(rst.getString("descripcion"));
+                detalle.setFactura(impFactura.obtenerCodigo(rst.getInt("codigo_factura")));
                 detalle.setSubtotal(rst.getDouble("subtotal"));
+                detalle.setConsumo(impConsumo.obtenerCodigo(rst.getInt("codigo_consumo")));
+                detalle.setServicio(impServicio.obtenerCodigo(rst.getInt("codigo_servicio")));
                 detalle.setM3Min(rst.getInt("m3_minimo"));
                 detalle.setCostoMin(rst.getDouble("costo_minimo"));
                 detalle.setCostoExc(rst.getDouble("costo_excedente"));
@@ -127,21 +132,10 @@ public class ImpDetalleFactura implements IntDetalleFactura {
                 detalle.setValorConsumo(rst.getDouble("consumo"));
                 detalle.setM3Exc(rst.getDouble("m3_excedente"));
                 detalle.setValorM3Exc(rst.getDouble("valor_m3_excedente"));
-                try {
-                    ImpFactura factura = new ImpFactura();
-                    ImpConsumo consumo = new ImpConsumo();
-                    ImpServicio servicio = new ImpServicio();
 
-                    detalle.setFactura(factura.obtenerCodigo(rst.getInt("codigo_factura")));
-                    detalle.setConsumo(consumo.obtenerCodigo(rst.getInt("codigo_consumo")));
-                    detalle.setServicio(servicio.obtenerCodigo(rst.getInt("codigo_servicio")));
-                } catch (Exception e) {
-                    throw e;
-                }
                 lista.add(detalle);
             }
         } catch (ClassNotFoundException | SQLException e) {
-            throw e;
         }
 
         return lista;
