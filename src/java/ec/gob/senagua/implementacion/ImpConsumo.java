@@ -82,7 +82,7 @@ public class ImpConsumo implements IntConsumo {
     public List<Consumo> obtenerTodos() throws Exception {
         List<Consumo> lista = new ArrayList<>();
         String sql = "SELECT codigo, fecha, lectura_anterior, lectura_actual, consumo, codigo_medidor\n"
-                + "  FROM consumo;";
+                + "  FROM consumo order by fecha ASC;";
         try {
             ResultSet rst = con.queryGet(sql);
             while (rst.next()) {
