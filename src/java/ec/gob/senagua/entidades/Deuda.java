@@ -68,6 +68,10 @@ public class Deuda {
         this.codigo = codigo;
     }
 
+    @Override
+    public String toString(){
+        return this.mesesPen+" "+this.valor;
+    }
     
     
 }
