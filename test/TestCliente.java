@@ -28,8 +28,8 @@ public class TestCliente {
         //cliente= new Cliente(100, "alex", "gualli", "UNACH", "0604405357", "alex.gualli.ga@gmail.com", "1997-10-10", 10);
              
         cliente.setCodigo(100);
-        cliente.setNombre("Sin");
-        cliente.setApellido("Cuello");
+        cliente.setNombre("Alex");
+        cliente.setApellido("Gualli");
         cliente.setCedula("0604405357");
         cliente.setCodigoDis(10);
         cliente.setCorreo("sincuello@gmail.com");
@@ -62,7 +62,7 @@ public class TestCliente {
         }        
          assertTrue(update>0);
         
-         //LISTAR POR CODIGO
+         //LISTAR POR CODIGO.
          Cliente cliente2 = null;
         try {
             cliente2 = imp.obtenerCodigo(100);
@@ -83,9 +83,7 @@ public class TestCliente {
         } catch (Exception e) {
             System.err.println("¡ERROR! NINGUN CLIENTE ENCONTRADO: " +e);
         }
-        assertTrue(lista.size() >0);
-        
-        
+        assertTrue(lista.size() >0);     
         
         //ELIMINAR
         int delete = 0;
