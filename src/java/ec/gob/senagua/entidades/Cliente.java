@@ -132,6 +132,6 @@ public class Cliente {
     
     @Override
     public String toString(){
-        return this.nombre+" "+this.fechaNac+ " "+this.apellido;
+        return this.apellido+" "+this.nombre+" "+this.fechaNac;
     } 
 }
