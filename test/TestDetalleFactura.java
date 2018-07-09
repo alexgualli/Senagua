@@ -30,7 +30,7 @@ public class TestDetalleFactura {
         Factura factura = new Factura();
         Servicio servicio = new Servicio();
         
-        consumo.setCodigo(4);
+        consumo.setCodigo(5);
         factura.setCodigo(1);
         servicio.setCodigo(1);
         
