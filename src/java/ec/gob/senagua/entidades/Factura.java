@@ -25,13 +25,12 @@ public class Factura {
     private String estado;
     private Date fechaEmi;
     private double total;
-    private DetalleFactura detalle;
     private double descuento;
 
     public Factura() {
     }
 
-    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, String estado, Date fechaEmi, double total, DetalleFactura detalle, double descuento) {
+    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, String estado, Date fechaEmi, double total, double descuento) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.usuario = usuario;
@@ -39,11 +38,10 @@ public class Factura {
         this.estado = estado;
         this.fechaEmi = fechaEmi;
         this.total = total;
-        this.detalle = detalle;
         this.descuento = descuento;
     }
 
-    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, String estado, String fechaEmi, double total, DetalleFactura detalle, double descuento) {
+    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, String estado, String fechaEmi, double total, double descuento) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.usuario = usuario;
@@ -56,7 +54,6 @@ public class Factura {
             System.err.println("No se ha podido definir las fechas. " + e.getMessage());
         }    
         this.total = total;
-        this.detalle = detalle;
         this.descuento = descuento;
     }
     
@@ -124,15 +121,7 @@ public class Factura {
 
     public void setTotal(double total) {
         this.total = total;
-    }
-
-    public DetalleFactura getDetalle() {
-        return detalle;
-    }
-
-    public void setDetalle(DetalleFactura detalle) {
-        this.detalle = detalle;
-    }
+    }    
 
     public double getDescuento() {
         return descuento;
