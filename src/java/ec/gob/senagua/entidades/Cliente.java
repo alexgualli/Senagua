@@ -129,18 +129,9 @@ public class Cliente {
     public void setCodigoDis(int codigoDis) {
         this.codigoDis = codigoDis;
     }
-
-   
+    
     @Override
     public String toString(){
-        return this.nombre+" "+this.apellido;
-    }
-    
-
-    
-    
-    
-    
-    
-    
+        return this.nombre+" "+this.fechaNac+ " "+this.apellido;
+    } 
 }
