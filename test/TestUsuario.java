@@ -23,7 +23,7 @@ public class TestUsuario {
         ImpUsuario user = new ImpUsuario();
         Usuario usuario = new Usuario();
 
-        usuario.setCodigo(100);
+        usuario.setCodigo(200);
         usuario.setNombre("alex");
         usuario.setTipo("lolo");
         usuario.setClave("1234");
@@ -56,7 +56,7 @@ public class TestUsuario {
         //LISTAR POR CODIGO
         Usuario usuario1 = null;
         try {
-            usuario1 = user.obtenerCodigo(100);
+            usuario1 = user.obtenerCodigo(200);
             System.out.println("Buscado por Codigo: " + usuario1.toString());
         } catch (Exception e) {
             System.err.println("ERROR! al buscar " + e.getMessage());
