@@ -123,7 +123,7 @@ public class ImpDeuda implements IntDeuda {
     @Override
     public int eliminar(int id) throws Exception {
         int delete = 0;
-        String sql = "DELETE FROM public.deudas\n"
+        String sql = "DELETE FROM public.deudas \n"
                 + " WHERE codigo=?;";
         List<Parametro> prts = new ArrayList<>();
         prts.add(new Parametro(1, id));
