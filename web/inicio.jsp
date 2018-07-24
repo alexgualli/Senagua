@@ -1,56 +1,63 @@
-<%-- 
-    Document   : inicio
-    Created on : 02/07/2018, 22:49:42
-    Author     : jhona
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-       <link rel="stylesheet" href="css/estilos.css">
+<html lang="en" >
 
-        <title>JSP Page</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>LogIn Form</title>
+        <link href="css/family Pacifico.css" rel="stylesheet" type="text/css"/>
+        <link href="css/family Arimio.css" rel="stylesheet" type="text/css"/>
+        <link href="css/family Hind.css" rel="stylesheet" type="text/css"/>
+            <link href="css/family Sand Serif.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/style.css">
+
+
     </head>
 
-<body>
-    <div class="contenedor-form">
-        <div class="toggle">
-            <span> Crear Cuenta</span>
+    <body>
+
+        <div id="login-button">
+            <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
+            </img>
         </div>
-        
-        <div class="formulario">
-            <h2>Iniciar Sesión</h2>
-            <form action="xx">
-                <input type="textusuario" placeholder="Usuario" required>
-                <input type="password" placeholder="Contraseña" required>
-                <input type="submit" value="Iniciar Sesión">
+        <div id="container">
+            <h1>BAYUSHIG</h1>
+            <span class="close-btn">
+                <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+            </span>
+
+            <form action="Login" method="GET">
+                <input type="text" name="txtnombre" placeholder="Nombre de Usuario" required="required">
+                <input type="password" name="txtclave" placeholder="Password" required="required">
+                <input type="submit" value="Iniciar sesion" name="btniniciar" />
+                <div id="remember-container">
+                    <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
+                    <span id="remember">Remember me</span>
+                    <span id="forgotten">Olvide mi Contrase�a   </span>
+                </div>
             </form>
         </div>
+
+        <!-- Forgotten Password Container -->
+        <div id="forgotten-container">
+            <h1>Forgotten</h1>
+            <span class="close-btn">
+                <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+            </span>
+
+            <form>
+                <input type="email" name="txtusuario" placeholder="Nombre de Usuario">
+                <a href="#" class="orange-btn">Get new password</a>
+            </form>         
+        </div>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js'></script>
+        <script src="jsprincipal/jquery-1.11.2.min.js" type="text/javascript"></script>
+
+        <script src="jsprincipal/index.js" type="text/javascript"></script>
+
+
+
+
+
+    </body> 
         
-        <div class="formulario">
-            <h2>Crea tu Cuenta</h2>
-            <form action="NuevoUsuario">
-                  <input type="textcodigo" placeholder="Codigo" required>
-                
-                <input type="textusuario" placeholder="Usuario" required>
-                
-                <input type="password" placeholder="Contraseña" required>
-                
-                <input type="textcargo" placeholder="Tipo de Cargo" required>
-                
-               
-                
-                <input type="submit" value="Registrarse">
-            </form>
-        </div>
-        <div class="reset-password">
-            <a href="#">Olvide mi Contraseña?</a>
-        </div>
-    </div>
-  
-    <script src="js/jquery-3.1.1.min.js"></script>    
-    <script src="js/main.js"></script>
-</body>
 </html>

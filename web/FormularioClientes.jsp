@@ -1,18 +1,16 @@
 <%-- 
     Document   : FormularioClientes
-    Created on : 08/07/2018, 10:19:07
+    Created on : 19/07/2018, 12:46:17
     Author     : jhona
 --%>
 
-<%@page import="ec.gob.senagua.entidades.Cliente"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.sun.mail.handlers.image_gif"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.Locale.Category"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.sql.ResultSet"%>
+<%@page import="ec.gob.senagua.entidades.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html lang="es">
+<html lang="es">    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,6 +35,7 @@
 
         %>
         <!-- Notifications area -->
+
         <section class="full-width container-notifications">
             <div class="full-width container-notifications-bg btn-Notification"></div>
             <section class="NotificationArea">
@@ -184,23 +183,14 @@
                                         </div>
                                     </a>
                                 </li>
-                                <li class="full-width">
-                                    <a href="providers.html" class="full-width">
-                                        <div class="navLateral-body-cl">
-                                            <i class="zmdi zmdi-truck"></i>
-                                        </div>
-                                        <div class="navLateral-body-cr hide-on-tablet">
-                                            PROVIDERS
-                                        </div>
-                                    </a>
-                                </li>
+
                                 <li class="full-width">
                                     <a href="payments.html" class="full-width">
                                         <div class="navLateral-body-cl">
                                             <i class="zmdi zmdi-card"></i>
                                         </div>
                                         <div class="navLateral-body-cr hide-on-tablet">
-                                            PAYMENTS
+                                            SERVICIOS
                                         </div>
                                     </a>
                                 </li>
@@ -253,12 +243,12 @@
                         </li>
                         <li class="full-width divider-menu-h"></li>
                         <li class="full-width">
-                            <a href="products.html" class="full-width">
+                            <a href="FormularioFactura.jsp" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-washing-machine"></i>
                                 </div>
                                 <div class="navLateral-body-cr hide-on-tablet">
-                                    PRODUCTS
+                                    FACTURAS
                                 </div>
                             </a>
                         </li>
@@ -330,14 +320,16 @@
                 </div>
                 <div class="full-width header-well-text">
                     <p class="text-condensedLight">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde aut nulla accusantium minus corporis accusamus fuga harum natus molestias necessitatibus.
+                    <ul>
+
+                    </ul>
                     </p>
                 </div>
             </section>
             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                 <div class="mdl-tabs__tab-bar">
                     <a href="#tabNewClient" class="mdl-tabs__tab is-active">NUEVO</a>
-                    <a href="#tabListClient" class="mdl-tabs__tab"><input class="mdl-tabs__tab"  type="submit" value="LISTA" name="listaCliente" /></a>
+                    <a href="#tabListClient" class="mdl-tabs__tab">LISTA</a>
 
                 </div>
                 <div class="mdl-tabs__panel is-active" id="tabNewClient">
@@ -396,7 +388,7 @@
                                                 <i class="zmdi zmdi-plus"></i>
                                             </button>
                                         <div class="mdl-tooltip" for="btn-addClient">Añadir Cliente</div>
-                                       
+
                                     </form>
                                 </div>
                             </div>
@@ -407,11 +399,15 @@
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop mdl-cell--2-offset-desktop">
                             <div class="full-width panel mdl-shadow--2dp">
+
+
+
                                 <div class="full-width panel-tittle bg-success text-center tittles">
                                     Lista de Clientes
                                 </div>
+
                                 <div class="full-width panel-content">
-                                    <form action="#">
+                                    <form action="" method="POST">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                                             <label class="mdl-button mdl-js-button mdl-button--icon" for="searchClient">
                                                 <i class="zmdi zmdi-search"></i>
@@ -421,28 +417,34 @@
                                                 <label class="mdl-textfield__label"></label>
                                             </div>
                                         </div>
+
                                     </form>
 
                                     <div class="mdl-list">
 
-                                        <table border="1">
-                                            <thead>
-                                            <th>Codigo</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido</th>
-                                            <th>DIreccion</th>
-                                            <th>Cedula</th>
-                                            <th>correo</th>
-                                            <th>fecha nacimiento</th>
-                                            <th>COdigodis</th>    
-                                            </thead>
+                                        <table class="table-responsive">
+                                         
                                             <tbody>
+                                                <%                                                   
+                                                    List<Cliente> clientes = (List<Cliente>) (Object) request.getSession().getAttribute("lista");
 
-                                            </tbody>   
+                                                    for (Cliente tmp : clientes) {%>     
+                                                <tr>
+                                            <div class="mdl-list__item mdl-list__item--two-line">
+                                                <span class="mdl-list__item-primary-content">
+                                                    <i class="zmdi zmdi-account mdl-list__item-avatar"></i>
+                                                    <span><%=tmp.getCodigo()%>. <%= tmp.getNombre() + " " + tmp.getApellido()%></span>
+                                                    <span class="mdl-list__item-sub-title"><%= tmp.getCedula()%></span>
+                                                </span>
+                                                <a class="mdl-list__item-secondary-action" href="#!"><i class="zmdi zmdi-more"></i></a>
+                                            </div>
 
+
+
+                                            </tr>
+                                            <%}%>                
+                                            </tbody>           
                                         </table>
-
-
 
                                     </div>
 

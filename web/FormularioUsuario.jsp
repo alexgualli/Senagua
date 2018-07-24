@@ -176,23 +176,14 @@
                                         </div>
                                     </a>
                                 </li>
-                                <li class="full-width">
-                                    <a href="providers.html" class="full-width">
-                                        <div class="navLateral-body-cl">
-                                            <i class="zmdi zmdi-truck"></i>
-                                        </div>
-                                        <div class="navLateral-body-cr hide-on-tablet">
-                                            PROVIDERS
-                                        </div>
-                                    </a>
-                                </li>
+                           
                                 <li class="full-width">
                                     <a href="payments.html" class="full-width">
                                         <div class="navLateral-body-cl">
                                             <i class="zmdi zmdi-card"></i>
                                         </div>
                                         <div class="navLateral-body-cr hide-on-tablet">
-                                            PAYMENTS
+                                          SERVICIOS
                                         </div>
                                     </a>
                                 </li>
@@ -231,7 +222,7 @@
                                     </a>
                                 </li>
                                 <li class="full-width">
-                                    <a href="FormularioClientes.jsp" class="full-width">
+                                    <a href="MostrarCliente" class="full-width">
                                         <div class="navLateral-body-cl">
                                             <i class="zmdi zmdi-accounts"></i>
                                         </div>
@@ -244,12 +235,12 @@
                         </li>
                         <li class="full-width divider-menu-h"></li>
                         <li class="full-width">
-                            <a href="products.html" class="full-width">
+                            <a href="FormularioFactura.jsp" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-washing-machine"></i>
                                 </div>
                                 <div class="navLateral-body-cr hide-on-tablet">
-                                    PRODUCTS
+                                    FACTURAS
                                 </div>
                             </a>
                         </li>

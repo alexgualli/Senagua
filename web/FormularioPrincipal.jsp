@@ -116,7 +116,7 @@
                             <i class="zmdi zmdi-power"></i>
                             <div class="mdl-tooltip" for="btn-exit">Cerrar secion</div>
                         </li>
-                                <li class="text-condensedLight noLink" ><small>Bienvenido: <%=user%></small></li>
+                        <li class="text-condensedLight noLink" ><small>Bienvenido: <%=user%></small></li>
                         <li class="noLink">
                             <figure>
                                 <img src="assets/img/avatar-male.png" alt="Avatar" class="img-responsive">
@@ -131,7 +131,8 @@
             <div class="full-width navLateral-bg btn-menu"></div>
             <div class="full-width navLateral-body">
                 <div class="full-width navLateral-body-logo text-center tittles">
-                    <i class="zmdi zmdi-close btn-menu"></i> Facturacion Bayushig 
+                    <i class="zmdi zmdi-close btn-menu"></i><img src="img/logo-final.png" width="100px" height="50px" alt=""/> Facturacion Bayushig 
+                 
                 </div>
                 <figure class="full-width" style="height: 77px;">
                     <div class="navLateral-body-cl">
@@ -182,23 +183,14 @@
                                         </div>
                                     </a>
                                 </li>
-                                <li class="full-width">
-                                    <a href="providers.html" class="full-width">
-                                        <div class="navLateral-body-cl">
-                                            <i class="zmdi zmdi-truck"></i>
-                                        </div>
-                                        <div class="navLateral-body-cr hide-on-tablet">
-                                            PROVIDERS
-                                        </div>
-                                    </a>
-                                </li>
+
                                 <li class="full-width">
                                     <a href="payments.html" class="full-width">
                                         <div class="navLateral-body-cl">
                                             <i class="zmdi zmdi-card"></i>
                                         </div>
                                         <div class="navLateral-body-cr hide-on-tablet">
-                                            PAYMENTS
+                                            SERVICIOS
                                         </div>
                                     </a>
                                 </li>
@@ -264,12 +256,12 @@
                         </li>
                         <li class="full-width divider-menu-h"></li>
                         <li class="full-width">
-                            <a href="products.html" class="full-width">
+                            <a href="FormularioFactura.jsp" class="full-width">
                                 <div class="navLateral-body-cl">
                                     <i class="zmdi zmdi-washing-machine"></i>
                                 </div>
                                 <div class="navLateral-body-cr hide-on-tablet">
-                                    PRODUCTS
+                                    FACTURAS
                                 </div>
                             </a>
                         </li>
@@ -336,13 +328,14 @@
         <!-- pageContent -->
         <section class="full-width pageContent">
             <section class="full-width text-center" style="padding: 40px 0;">
-                <h3 class="text-center tittles">RESPONSIVE TILES</h3>
+                <h3 class="text-center tittles">  <img src="img/logo-final.png" alt="" width="400px" /></h3>
+                
                 <!-- Tiles -->
                 <article class="full-width tile">
                     <div class="tile-text">
                         <span class="text-condensedLight">
                             2<br>
-                            <small>Administrators</small>
+                            <small>Administrdores</small>
                         </span>
                     </div>
                     <i class="zmdi zmdi-account tile-icon"></i>
@@ -351,7 +344,7 @@
                     <div class="tile-text">
                         <span class="text-condensedLight">
                             71<br>
-                            <small>Clients</small>
+                            <small>Clientes</small>
                         </span>
                     </div>
                     <i class="zmdi zmdi-accounts tile-icon"></i>
@@ -359,8 +352,8 @@
                 <article class="full-width tile">
                     <div class="tile-text">
                         <span class="text-condensedLight">
-                            7<br>
-                            <small>Providers</small>
+                            2<br>
+                            <small>Servicios</small>
                         </span>
                     </div>
                     <i class="zmdi zmdi-truck tile-icon"></i>
@@ -394,7 +387,9 @@
                 </article>
             </section>
             <section class="full-width" style="margin: 30px 0;">
-                <h3 class="text-center tittles">RESPONSIVE TIMELINE</h3>
+                <h3 class="text-center tittles">Sistema desarrollado en la Universidad Nacional de Chimborazo   </h3>
+                <center><img src="img/marca_unach.png"  width="400px" height="200px"alt=""/></center>
+
                 <!-- TimeLine -->
                 <div id="timeline-c" class="timeline-c">
                     <div class="timeline-c-box">
@@ -402,9 +397,9 @@
                             <i class="zmdi zmdi-twitter"></i>
                         </div>
                         <div class="timeline-c-box-content">
-                            <h4 class="text-center text-condensedLight">Tittle timeline</h4>
+                            <h4 class="text-center text-condensedLight">Desarrolladores</h4>
                             <p class="text-center">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nobis rerum iure nostrum dolor. Quo totam possimus, ex, sapiente rerum vel maxime fugiat, ipsam blanditiis veniam, suscipit labore excepturi veritatis.
+
                             </p>
                             <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>05-04-2016</span>
                         </div>
@@ -414,9 +409,12 @@
                             <i class="zmdi zmdi-whatsapp"></i>
                         </div>
                         <div class="timeline-c-box-content">
-                            <h4 class="text-center text-condensedLight">Tittle timeline</h4>
+                            <h4 class="text-center text-condensedLight">Secretaria Nacional del Agua</h4>
                             <p class="text-center">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nobis rerum iure nostrum dolor. Quo totam possimus, ex, sapiente rerum vel maxime fugiat, ipsam blanditiis veniam, suscipit labore excepturi veritatis.
+                            <li>LEY DE RECURSOS HIDRICOS II SUPLEMENTO RO 305 6-08-204<br></li>
+                              <li>  NORMATIVA SECUNDARIA<br></li>
+                               <li> REGLAMENTO LEY RECURSOS HIDRICOS USOS Y APROVECHAMIENTO DEL AGUA</li>
+                                
                             </p>
                             <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>06-04-2016</span>
                         </div>
@@ -426,10 +424,10 @@
                             <i class="zmdi zmdi-facebook"></i>
                         </div>
                         <div class="timeline-c-box-content">
-                            <h4 class="text-center text-condensedLight">Tittle timeline</h4>
-                            <p class="text-center">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nobis rerum iure nostrum dolor. Quo totam possimus, ex, sapiente rerum vel maxime fugiat, ipsam blanditiis veniam, suscipit labore excepturi veritatis.
-                            </p>
+                            <h4 class="text-center text-condensedLight">Redes Sociales</h4>
+                          
+                             <img src="img/bd2.png" alt="" width="300px" height="100px"/>
+                         
                             <span class="timeline-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i>07-04-2016</span>
                         </div>
                     </div>
