@@ -281,7 +281,7 @@
                                     <i class="zmdi zmdi-wrench"></i>
                                 </div>
                                 <div class="navLateral-body-cr hide-on-tablet">
-                                    SETTINGS
+                                    SETTINGS HOLA 
                                 </div>
                                 <span class="zmdi zmdi-chevron-left"></span>
                             </a>
