@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jhona
  */
-public class ServMostrarCliente extends HttpServlet {
+public class ServControlSistema extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +36,19 @@ public class ServMostrarCliente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+
             ImpCliente imp = new ImpCliente();
             List<Cliente> lst = new ArrayList<>();
+     
 
             try {
                 lst = imp.obtenerTodos();
+        out.print(lst.size());
             } catch (Exception e) {
                 System.out.print("error: " + e);
             }
-
-            request.getSession().setAttribute("lista", lst);
-            request.getRequestDispatcher("FormularioClientes.jsp").forward(request, response);
+              request.getSession().setAttribute("lista", lst);
+            request.getRequestDispatcher("FormularioPrincipal.jsp").forward(request, response);
 
         }
     }
