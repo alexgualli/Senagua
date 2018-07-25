@@ -19,6 +19,8 @@ public interface IntFactura {
     public Factura obtenerCodigo(int id) throws Exception;
     
     public List<Factura> obtenerTodos() throws Exception;
+    
+    public List<Factura> obtenerMedidor(String dato) throws Exception;
 
     public int actualizar(Factura factura) throws Exception;
 
