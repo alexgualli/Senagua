@@ -22,6 +22,7 @@ public class Factura {
     private Cliente cliente;
     private Usuario usuario;
     private String observacion;
+    private Medidor medidor;
     private String estado;
     private Date fechaEmi;
     private double total;
@@ -30,22 +31,26 @@ public class Factura {
     public Factura() {
     }
 
-    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, String estado, Date fechaEmi, double total, double descuento) {
+    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, Medidor medidor, String estado, Date fechaEmi, double total, double descuento) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.usuario = usuario;
         this.observacion = observacion;
+        this.medidor = medidor;
         this.estado = estado;
         this.fechaEmi = fechaEmi;
         this.total = total;
         this.descuento = descuento;
     }
 
-    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, String estado, String fechaEmi, double total, double descuento) {
+    
+
+    public Factura(int codigo, Cliente cliente, Usuario usuario, String observacion, Medidor medidor, String estado, String fechaEmi, double total, double descuento) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.usuario = usuario;
         this.observacion = observacion;
+        this.medidor = medidor;
         this.estado = estado;
         
         try {
@@ -65,6 +70,8 @@ public class Factura {
         }
 
     }
+    
+    
     
     
     public int getCodigo() {
@@ -135,6 +142,14 @@ public class Factura {
     @Override
     public String toString(){
         return this.observacion+" "+this.fechaEmi+" "+this.total;
+    }
+
+    public Medidor getMedidor() {
+        return medidor;
+    }
+
+    public void setMedidor(Medidor medidor) {
+        this.medidor = medidor;
     }
         
  
