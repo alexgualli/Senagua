@@ -281,7 +281,7 @@
                                     <i class="zmdi zmdi-wrench"></i>
                                 </div>
                                 <div class="navLateral-body-cr hide-on-tablet">
-                                    SETTINGS HOLA 
+                                    SETTINGS
                                 </div>
                                 <span class="zmdi zmdi-chevron-left"></span>
                             </a>
@@ -407,13 +407,15 @@
                                 </div>
 
                                 <div class="full-width panel-content">
-                                    <form action="" method="POST">
+                                    <form action="BuscarCliente" method="POST">
                                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                                          
                                             <label class="mdl-button mdl-js-button mdl-button--icon" for="searchClient">
-                                                <i class="zmdi zmdi-search"></i>
+                                               
+                                                  <input class="zmdi zmdi-search" type="submit" value="" />
                                             </label>
                                             <div class="mdl-textfield__expandable-holder">
-                                                <input class="mdl-textfield__input" type="text" id="searchClient">
+                                                <input name="txtBuscar" class="mdl-textfield__input" type="text" id="searchClient">
                                                 <label class="mdl-textfield__label"></label>
                                             </div>
                                         </div>
